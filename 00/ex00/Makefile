@@ -6,7 +6,7 @@
 #    By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:23:35 by aehrlich          #+#    #+#              #
-#    Updated: 2023/07/29 17:36:17 by aehrlich         ###   ########.fr        #
+#    Updated: 2023/07/29 18:51:22 by aehrlich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,20 +15,18 @@ NAME		= megaphone
 CC			= c++
 CFLAGS		= -Werror -Wextra -Wall -std=c++98
 
-SRCDIR		= srcs
 OBJDIR		= objs
 
 SRCS		= megaphone.cpp
 
-SRCS		:= $(SRCS:%=$(SRCDIR)/%)
-OBJS		:= $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+OBJS		:= $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+$(OBJDIR)/%.o: %.cpp
 	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
