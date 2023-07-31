@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:24:10 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/07/29 18:52:30 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:50:04 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstring>
+#include <cstdlib>
 
 int	main(int argc, char **argv)
 {
@@ -21,7 +23,7 @@ int	main(int argc, char **argv)
 		for (int i = 1; i < argc; i++)
 		{
 			for (size_t j = 0; j < std::strlen(argv[i]); j++)
-				std::putchar(std::toupper(argv[i][j]));
+				std::putwchar(std::toupper(argv[i][j]));
 		}
 		std::cout<<std::endl;
 	}
