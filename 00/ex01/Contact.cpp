@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 08:21:22 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/07/31 09:56:52 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:01:20 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
 Contact::Contact(std::string fN, std::string lN, std::string nN, int pN, std::string dS) :
-	firstName(fN), lastName(lN), nickName(nN),
-	phoneNumber(pN), darkestSecret(dS)
+	_firstName(fN), _lastName(lN), _nickName(nN),
+	_phoneNumber(pN), _darkestSecret(dS)
 {
 }
 
@@ -24,4 +24,54 @@ Contact::Contact()
 
 Contact::~Contact()
 {
+}
+
+std::string	Contact::getFirstName()const
+{
+	return this->_firstName;
+}
+
+void	Contact::setFirstName(std::string firstName)
+{
+	this->_firstName = firstName;
+}
+
+std::string	Contact::getLastName()const
+{
+	return this->_lastName;
+}
+
+void	Contact::setLastName(std::string lastName)
+{
+	this->_lastName = lastName;
+}
+
+std::string	Contact::getNickName()const
+{
+	return this->_nickName;
+}
+
+void	Contact::setNickName(std::string nickName)
+{
+	this->_nickName = nickName;
+}
+
+int	Contact::getPhoneNumber()const
+{
+	return this->_phoneNumber;
+}
+
+void	Contact::setPhoneNumber(int phoneNumber)
+{
+	this->_phoneNumber = phoneNumber;
+}
+
+std::string	Contact::getDarkestSecret()const
+{
+	return this->_darkestSecret;
+}
+
+void	Contact::setDarkestSecret(std::string secret)
+{
+	this->_darkestSecret = secret;
 }
