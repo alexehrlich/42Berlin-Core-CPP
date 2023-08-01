@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+         #
+#    By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:23:35 by aehrlich          #+#    #+#              #
-#    Updated: 2023/08/01 09:02:11 by aehrlich         ###   ########.fr        #
+#    Updated: 2023/08/01 15:53:33 by aehrlich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		= -Werror -Wextra -Wall -std=c++98
 
 OBJDIR		= objs
 
-SRCS		= main.cpp PhoneBook.cpp Contact.cpp
+SRCS		= main.cpp PhoneBook.cpp Contact.cpp UserInterface.cpp
 
 OBJS		:= $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
