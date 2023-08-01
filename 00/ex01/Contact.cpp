@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 08:21:22 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/07/31 14:01:20 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/08/01 07:26:23 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact(std::string fN, std::string lN, std::string nN, int pN, std::string dS) :
+Contact::Contact(std::string fN, std::string lN, std::string nN, std::string pN, std::string dS) :
 	_firstName(fN), _lastName(lN), _nickName(nN),
 	_phoneNumber(pN), _darkestSecret(dS)
 {
@@ -56,12 +56,12 @@ void	Contact::setNickName(std::string nickName)
 	this->_nickName = nickName;
 }
 
-int	Contact::getPhoneNumber()const
+std::string	Contact::getPhoneNumber()const
 {
 	return this->_phoneNumber;
 }
 
-void	Contact::setPhoneNumber(int phoneNumber)
+void	Contact::setPhoneNumber(std::string phoneNumber)
 {
 	this->_phoneNumber = phoneNumber;
 }

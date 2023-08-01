@@ -6,14 +6,14 @@
 #    By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:23:35 by aehrlich          #+#    #+#              #
-#    Updated: 2023/07/31 08:47:26 by aehrlich         ###   ########.fr        #
+#    Updated: 2023/08/01 09:02:11 by aehrlich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= phonebook
 
 CC			= c++
-CFLAGS		= #-Werror -Wextra -Wall -std=c++98
+CFLAGS		= -Werror -Wextra -Wall -std=c++98
 
 OBJDIR		= objs
 

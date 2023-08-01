@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 08:16:52 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/07/31 17:13:55 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/08/01 08:18:54 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ public:
 	~PhoneBook();
 	
 	void		addContact(Contact c);
-	void		searchContact(int index);
+	Contact*	getContactAtIndex(int index);
+	bool		isEmpty()const;
 
 private:
 	Contact		_contatcs[8];

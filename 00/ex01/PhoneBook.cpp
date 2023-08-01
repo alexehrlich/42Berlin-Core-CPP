@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 08:18:18 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/07/31 18:01:00 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/08/01 08:19:09 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,27 @@
 
 PhoneBook::PhoneBook()
 {
-	this->_addIndex = 0;
+	_addIndex = 0;
 }
 
 PhoneBook::~PhoneBook()
-{	
+{
 }
 
 void	PhoneBook::addContact(Contact c)
 {
-	this->_contatcs[this->_addIndex % 8] = c;
+	_contatcs[_addIndex % 8] = c;
 	_addIndex++;
 }
 
-void	PhoneBook::searchContact(int index)
+Contact*	PhoneBook::getContactAtIndex(int index)
 {
-	if (index > 7 || index < 0)
-		std::cout << "Invalid index. Must be between 0 and 7." << std::endl;
-	else if (index >= _addIndex)
-		std::cout << "No user at index" << index << std::endl;
-	else
-		std::cout << _contatcs[index].getFirstName() << std::endl;
+	if (index > 7 || index < 0 || index >= _addIndex)
+		return (NULL);
+	return (_contatcs + index);
+}
+
+bool	PhoneBook::isEmpty()const
+{
+	return (_addIndex == 0);
 }

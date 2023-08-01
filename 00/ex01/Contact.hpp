@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 08:19:50 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/07/31 13:51:27 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/08/01 07:26:34 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Contact
 {
 
 public:
-	Contact(std::string fN, std::string lN, std::string nN, int pN, std::string dS);
+	Contact(std::string fN, std::string lN, std::string nN, std::string pN, std::string dS);
 	Contact();
 	~Contact();
 
@@ -33,8 +33,8 @@ void		setLastName(std::string lastName);
 std::string	getNickName()const;
 void		setNickName(std::string nickName);
 
-int			getPhoneNumber()const;
-void		setPhoneNumber(int phoneNumber);
+std::string	getPhoneNumber()const;
+void		setPhoneNumber(std::string phoneNumber);
 
 std::string	getDarkestSecret()const;
 void	setDarkestSecret(std::string secret);
@@ -44,7 +44,7 @@ private:
 	std::string	_firstName;
 	std::string	_lastName;
 	std::string	_nickName;
-	int			_phoneNumber;
+	std::string	_phoneNumber;
 	std::string	_darkestSecret;
 };
 
