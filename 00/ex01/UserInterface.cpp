@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:37:19 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/08/01 16:03:54 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:02:04 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ UserInterface::~UserInterface()
 
 void	UserInterface::introduction()
 {
-	std::cout << "Welcome to you personal phonebook. There are the following options:" << std::endl<<std::endl;
+	std::cout << "Welcome to your personal phonebook. There are the following options:" << std::endl<<std::endl;
 	std::cout << "- ADD\t\tsave new contact." << std::endl;
 	std::cout << "- SEARCH\tdisplay a specific contact." << std::endl;
 	std::cout << "- EXIT\t\tclose the phonebook." << std::endl<< std::endl;
