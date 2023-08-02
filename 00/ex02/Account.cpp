@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 17:29:51 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/08/02 07:28:40 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:04:43 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
-#include <time.h>
+#include <ctime>
 
 int Account::_nbAccounts;
 int Account::_totalAmount;
