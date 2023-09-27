@@ -6,18 +6,13 @@
 /*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:03:04 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/09/27 16:31:26 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:40:24 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 #include <string.h>
-
-int	checkInput(int argc, char **argv)
-{
-	
-}
 
 int	main(int argc, char **argv)
 {
