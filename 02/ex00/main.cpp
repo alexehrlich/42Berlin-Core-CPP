@@ -5,20 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 08:11:07 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/22 12:38:41 by aehrlich         ###   ########.fr       */
+/*   Created: 2023/11/13 12:54:10 by aehrlich          #+#    #+#             */
+/*   Updated: 2023/11/13 15:45:38 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include "Fixed.hpp"
 
-int	main(void)
+int main( void ) 
 {
-	Zombie	*zombie1 = Zombie::newZombie("HEAPIE");
-
-	zombie1->announce();
-	Zombie::randomChump("STACKIE");
-	delete zombie1;
-	
-	return (0);
+    Fixed a;
+    Fixed b( a );
+    Fixed c;
+    c = b;
+    
+    std::cout << a.getRawBits() << std::endl;
+    std::cout << b.getRawBits() << std::endl;
+    std::cout << c.getRawBits() << std::endl;
+    return 0;
 }
