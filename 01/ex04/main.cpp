@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:03:04 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/07 08:15:57 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:33:48 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	infile.open(argv[1]);
 	if (infile.fail())
 		return (std::cout << "File does not exist" << std::endl, 1);
-	outfile.open(std::string(argv[1]) + ".replace");
+	outfile.open((std::string(argv[1]) + ".replace").c_str());
 	if (outfile.fail())
 	{
 		infile.close();

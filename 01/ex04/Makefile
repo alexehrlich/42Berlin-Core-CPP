@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+         #
+#    By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:23:35 by aehrlich          #+#    #+#              #
-#    Updated: 2023/09/27 09:25:44 by aehrlich         ###   ########.fr        #
+#    Updated: 2023/11/22 15:38:11 by aehrlich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ $(OBJDIR)/%.o: %.cpp
 
 clean:
 	rm -rf $(OBJDIR)
+	rm -f *.replace
 
 fclean: clean
 	rm -f $(NAME)
