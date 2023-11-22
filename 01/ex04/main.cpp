@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:03:04 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/09/27 16:40:24 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/07 08:15:57 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	std::string		line;
 	size_t			findPos;
 	size_t			searchStartPos;
-	
+
 	if (argc != 4)
 		return (std::cout << "Args needed <filename> <s1> <s2>" << std::endl, 1);
 	infile.open(argv[1]);
@@ -46,10 +46,12 @@ int	main(int argc, char **argv)
 				searchStartPos = findPos + std::string(argv[2]).length();
 				findPos = line.find(std::string(argv[2]), searchStartPos);
 			}
-			outfile << line.substr(searchStartPos, findPos - searchStartPos) << std::endl;
+			outfile << line.substr(searchStartPos, findPos - searchStartPos);
 		}
 		else
-			outfile << line << std::endl;
+			outfile << line;
+		if (!infile.eof())
+			outfile << std::endl;
 	}
 	infile.close();
 	outfile.close();
