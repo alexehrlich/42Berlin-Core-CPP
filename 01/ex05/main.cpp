@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 16:45:41 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/22 17:22:18 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:55:34 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main()
 {
 	Harl	harl;
 
+	harl.complain("dfs");
 	harl.complain("DEBUG");
 	return (0);
 }

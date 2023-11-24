@@ -6,7 +6,7 @@
 #    By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:23:35 by aehrlich          #+#    #+#              #
-#    Updated: 2023/11/22 15:42:18 by aehrlich         ###   ########.fr        #
+#    Updated: 2023/11/24 11:56:18 by aehrlich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ $(OBJDIR)/%.o: %.cpp
 
 clean:
 	rm -rf $(OBJDIR)
-	rm -f *.replace
 
 fclean: clean
 	rm -f $(NAME)
