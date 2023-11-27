@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:41:17 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/27 14:47:49 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/27 20:28:13 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ float	Fixed::toFloat() const
 Fixed& Fixed::operator=(const Fixed& rhs)
 {
 	std::cout << "Copy assignment constructor called" << std::endl;
-	this->setRawBits(rhs.getRawBits());
+	if (this != &rhs)
+		this->setRawBits(rhs.getRawBits());
 	return (*this);
 }
 

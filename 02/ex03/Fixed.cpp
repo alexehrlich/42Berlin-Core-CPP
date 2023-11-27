@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:41:17 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/27 20:27:36 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:08:21 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,7 @@ const Fixed&	Fixed::max(const Fixed& f1, const Fixed& f2)
 Fixed& Fixed::operator=(const Fixed& rhs)
 {
 	//std::cout << "Copy assignment constructor called" << std::endl;
-	if (this != &rhs)
-		this->setRawBits(rhs.getRawBits());
+	this->setRawBits(rhs.getRawBits());
 	return (*this);
 }
 
