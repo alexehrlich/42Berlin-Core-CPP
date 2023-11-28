@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+         #
+#    By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:23:35 by aehrlich          #+#    #+#              #
-#    Updated: 2023/11/27 20:03:38 by aehrlich         ###   ########.fr        #
+#    Updated: 2023/11/28 11:01:56 by aehrlich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= fixed
+NAME		= bsp
 
 CC			= c++
 CFLAGS		= -Werror -Wextra -Wall -std=c++98

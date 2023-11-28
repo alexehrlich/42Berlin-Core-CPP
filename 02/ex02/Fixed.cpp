@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:41:17 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/27 20:27:36 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:00:17 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 /*		CONSTURCTOR		*/
 Fixed::Fixed(const Fixed& f)
 {
-	//std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 	this->setRawBits(f.getRawBits());
 }
 
 Fixed::Fixed()
 {
-	//std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	this->_numberValue = 0;
 }
 
@@ -38,19 +38,19 @@ Fixed::Fixed(const float f)
 
 Fixed::~Fixed()
 {
-	//std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 /*		MEMBER FUNCTIONS	*/
 void Fixed::setRawBits(int value)
 {
-	//std::cout << "setRawBits member function called" << std::endl;
+	std::cout << "setRawBits member function called" << std::endl;
 	this->_numberValue = value;
 }
 
 int Fixed::getRawBits() const
 {
-	//std::cout << "getRawBits member function called" << std::endl;
+	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_numberValue);
 }
 
@@ -94,7 +94,7 @@ const Fixed&	Fixed::max(const Fixed& f1, const Fixed& f2)
 /*		OPERATOR OVERLOAD	*/
 Fixed& Fixed::operator=(const Fixed& rhs)
 {
-	//std::cout << "Copy assignment constructor called" << std::endl;
+	std::cout << "Copy assignment constructor called" << std::endl;
 	if (this != &rhs)
 		this->setRawBits(rhs.getRawBits());
 	return (*this);
