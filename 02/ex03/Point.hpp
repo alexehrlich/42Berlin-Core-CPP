@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:53:06 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/27 20:14:16 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/28 09:55:16 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ class Point
 		Fixed	getX() const;
 		Fixed	getY() const;
 
-		bool	bsp(Point const a, Point const b, Point const c, Point const point);
-
 	private:
 		const Fixed	_x;
 		const Fixed	_y;
 };
+
+bool	bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif
 

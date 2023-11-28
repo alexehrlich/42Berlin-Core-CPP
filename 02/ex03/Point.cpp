@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 20:04:17 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/27 20:26:31 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/28 09:02:26 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ Point&	Point::operator=(const Point& p)
 	}
 	return (*this);
 }
-
