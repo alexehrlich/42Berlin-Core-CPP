@@ -6,18 +6,20 @@
 /*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:23:30 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/29 16:46:37 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:57:27 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
+	const WrongAnimal* k = new WrongCat();
 	const Dog* d = new Dog();
 
 	std::cout << j->getType() << " " << std::endl; 
@@ -26,6 +28,7 @@ int main()
 	
 	i->makeSound(); //will output the cat sound! 
 	j->makeSound();
+	k->makeSound(); //is wrong, will output the wrong animal sound
 	//j->makeDogThings - does not work, because its of type Animal
 	d->makeSound();
 	d->makeDogThings();
