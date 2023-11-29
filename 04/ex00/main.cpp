@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:23:30 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/29 16:57:27 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:01:57 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int main()
 	delete meta;
 	delete j;
 	delete i;
+	delete d;
+	delete k;
 	return 0;
 }
