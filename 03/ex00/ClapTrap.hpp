@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:49:17 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/29 10:31:33 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:29:23 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class ClapTrap
 
 		std::string		getName() const;
 		unsigned int	getHitPoints() const;
-		int				getEnergypoints() const;
+		int				getEnergyPoints() const;
 		int				getAttackDamage() const;
 
 	private:

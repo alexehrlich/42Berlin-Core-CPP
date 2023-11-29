@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:54:55 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/29 10:48:12 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:29:33 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ unsigned int	ClapTrap::getHitPoints() const
 {
 	return (_hitPoints);
 }
-int				ClapTrap::getEnergypoints() const
+int				ClapTrap::getEnergyPoints() const
 {
 	return (_energyPoints);
 }
