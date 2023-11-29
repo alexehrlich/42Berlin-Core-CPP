@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:54:55 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/29 10:31:36 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/11/29 10:48:12 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ClapTrap::ClapTrap(const ClapTrap& ct): _name(ct._name), _hitPoints(ct._hitPoint
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap: Called destructor" << std::endl;
+	std::cout << "ClapTrap: " << _name << " destroyed" << std::endl;
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& c)
