@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:32:33 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/29 15:16:16 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:49:28 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ class DiamondTrap: public FragTrap, public ScavTrap
 		~DiamondTrap();
 
 		void	whoAmI(void) const;
+		void	attack(const std::string& target);
 
 	private:
 		std::string		_name;
 };
+
 #endif
