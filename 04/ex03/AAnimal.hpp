@@ -29,7 +29,6 @@ class AAnimal
 
 	protected:
 		std::string	_type;
-		Brain*		_brain;
 };
 	
 #endif

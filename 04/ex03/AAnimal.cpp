@@ -14,12 +14,11 @@
 
 AAnimal::AAnimal()
 {
-	this->_brain = new Brain();
 	this->_type = "AAnimal";
 	std::cout << "Called AAnimal default constructor" << std::endl;
 }
 
-AAnimal::AAnimal(const AAnimal& a): _type(a.getType()), _brain(new Brain())
+AAnimal::AAnimal(const AAnimal& a): _type(a.getType())
 {
 	std::cout << "Called AAnimal copy constructor" << std::endl;
 }
@@ -28,8 +27,6 @@ AAnimal&	AAnimal::operator=(const AAnimal& a)
 {
 	if (this != &a)
 	{
-		delete this->_brain;
-		_brain = new Brain();
 		this->_type = a.getType();
 		std::cout << "Called AAnimal copy assignment constructor" << std::endl;
 	}
@@ -38,7 +35,6 @@ AAnimal&	AAnimal::operator=(const AAnimal& a)
 
 AAnimal::~AAnimal()
 {
-	delete _brain;
 	std::cout << "Called AAnimal destructor" << std::endl;
 }
 

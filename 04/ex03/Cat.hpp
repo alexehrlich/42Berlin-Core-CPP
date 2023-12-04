@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:17:12 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/01 10:38:40 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:03:23 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 			Cat&	operator=(const Cat& a);
 
 			void	makeSound(void) const;
+
+		private:
+			Brain*	_brain;
 	};
 
 #endif
