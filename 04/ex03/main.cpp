@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:36:49 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/05 09:55:15 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:26:02 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int main()
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+	me->use(-1, *bob);
+	me->use(4, *bob);
+	me->use(2, *bob);
 	delete bob;
 	delete me;
 	delete src;

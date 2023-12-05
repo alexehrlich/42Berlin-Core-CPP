@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:25:15 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/05 11:07:21 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:33:22 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (_materiasToLearn[i]->getType() == type)
+		if (_materiasToLearn[i] && _materiasToLearn[i]->getType() == type)
 		{
 			std::cout << "MateriaSource learned " << type << " and returns a new one" << std::endl;
 			return (_materiasToLearn[i]->clone());

@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:13:22 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/05 10:12:46 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:35:15 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ void	Character::equip(AMateria* m)
 
 void	Character::unequip(int idx)
 {
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "Invalid slot index. Has to be between 0 and 3" << std::endl;
+		return ;
+	}
 	if (_slots[idx])
 	{
 		std::cout << _name << " unequipped at slot " << idx <<": " << _slots[idx]->getType() << std::endl;
@@ -91,10 +96,15 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "Invalid slot index. Has to be between 0 and 3" << std::endl;
+		return ;
+	}
 	if (_slots[idx])
 	{
-		_slots[idx]->use(target);
 		std::cout << _name << " uses " << _slots[idx]->getType() << " on target: " << target.getName() << std::endl;
+		_slots[idx]->use(target);
 		return ;
 	}
 	std::cout << _name << " has nothing to use on this slot index" << std::endl;
