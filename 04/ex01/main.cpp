@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:23:30 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/01 10:33:56 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:50:39 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main()
 	Animal *animals[4] = { new Dog(), new Cat(), new Dog(), new Cat() };
 	
 	animals[0]->makeSound();
-
+	
 	for (int i = 0; i < 4; i++)
 		delete animals[i];
 	return 0;

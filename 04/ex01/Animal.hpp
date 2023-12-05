@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:57:53 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/01 09:30:40 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:43:46 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 
 		protected:
 			std::string	_type;
-			Brain*		_brain;
 	};
 	
 #endif

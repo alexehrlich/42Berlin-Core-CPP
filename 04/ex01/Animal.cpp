@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:05:07 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/01 09:33:34 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:45:06 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 Animal::Animal()
 {
-	this->_brain = new Brain();
 	this->_type = "Animal";
 	std::cout << "Called Animal default constructor" << std::endl;
 }
 
-Animal::Animal(const Animal& a): _type(a.getType()), _brain(new Brain())
+Animal::Animal(const Animal& a): _type(a.getType())
 {
 	std::cout << "Called Animal copy constructor" << std::endl;
 }
@@ -28,8 +27,6 @@ Animal&	Animal::operator=(const Animal& a)
 {
 	if (this != &a)
 	{
-		delete this->_brain;
-		_brain = new Brain();
 		this->_type = a.getType();
 		std::cout << "Called Animal copy assignment constructor" << std::endl;
 	}
@@ -38,7 +35,6 @@ Animal&	Animal::operator=(const Animal& a)
 
 Animal::~Animal()
 {
-	delete _brain;
 	std::cout << "Called Animal destructor" << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:25:51 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/01 09:30:30 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:45:19 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 
 			void	makeSound(void) const;
 			void	makeDogThings( void ) const;
+		
+		private:
+			Brain*	_brain;
 	};
 
 #endif
