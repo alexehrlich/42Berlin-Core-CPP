@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:23:30 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/05 11:52:39 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:52:14 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,19 @@ int main()
 	AAnimal *animals[4] = { new Dog(), new Cat(), new Dog(), new Cat() };
 	
 	animals[0]->makeSound();
+
+	std::cout << std::endl;
+	Dog d1;
+	d1.setIdea(0, "Be nice");
+	Dog d2(d1);
+	std::cout << "Ideas d2:" << std::endl;
+	std::cout << d2.getIdea(0) << std::endl;
+	d2.setIdea(1, "smile once a day");
+	Dog d3;
+	d3 = d2;
+	std::cout << "Ideas d3:" << std::endl;
+	std::cout << d3.getIdea(0) << std::endl;
+	std::cout << d3.getIdea(1) << std::endl;
 
 	for (int i = 0; i < 4; i++)
 		delete animals[i];

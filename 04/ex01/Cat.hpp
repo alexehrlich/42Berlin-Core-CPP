@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:17:12 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/05 11:45:15 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:52:56 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@
 			Cat();
 			Cat(const Cat& a);
 			~Cat();
-			Cat&	operator=(const Cat& a);
+			Cat&		operator=(const Cat& a);
 
-			void	makeSound(void) const;
+			void		makeSound(void) const;
+			void		setIdea(int idx, std::string idea);
+			std::string	getIdea(int idx);
 
 		private:
 			Brain*	_brain;

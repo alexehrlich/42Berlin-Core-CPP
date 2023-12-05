@@ -5,32 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 16:23:30 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/01 10:56:50 by aehrlich         ###   ########.fr       */
+/*   Created: 2023/12/04 12:36:49 by aehrlich          #+#    #+#             */
+/*   Updated: 2023/12/05 09:55:15 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
+#include "AMateria.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
+#include "Character.hpp"
 
 int main()
 {
-	//AAnimal	animal; //not possible anymore, because its abstract now.
-	const AAnimal* j = new Dog();
-	const AAnimal* i = new Cat();
-
-	j->makeSound();
-	i->makeSound();
-	//animal.makeSound(); //not possible anymore, because its abstract now.
-	
-	delete j;//should not create a leak
-	delete i;
-	
-	AAnimal *animals[4] = { new Dog(), new Cat(), new Dog(), new Cat() };
-	
-	animals[0]->makeSound();
-
-	for (int i = 0; i < 4; i++)
-		delete animals[i];
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
 	return 0;
 }
