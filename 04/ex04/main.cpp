@@ -6,15 +6,15 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:36:49 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/04 16:37:07 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 09:55:15 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "Cure.hpp"
 #include "Ice.hpp"
-#include "ICharacter.hpp"
 #include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 #include "Character.hpp"
 
 int main()

@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:25:31 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/04 17:34:23 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 09:56:58 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Character: public ICharacter
 		Character();
 		Character(const Character& src);
 		Character(std::string name);
-		Character&	operator=(const Character& src);
 		~Character();
+		Character&			operator=(const Character& src);
 
 		std::string const &	getName() const;
 		void				equip(AMateria* m);
