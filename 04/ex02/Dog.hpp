@@ -6,16 +6,16 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:25:51 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/01 10:48:59 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:03:34 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 # define DOG_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-	class Dog: public Animal
+	class Dog: public AAnimal
 	{
 		public:
 			Dog();
@@ -25,6 +25,9 @@
 
 			void	makeSound(void) const;
 			void	makeDogThings( void ) const;
+		
+		private:
+			Brain*	_brain;
 	};
 
 #endif

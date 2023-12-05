@@ -1,53 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:05:07 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/01 10:48:40 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/01 09:33:34 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-Animal::Animal()
+AAnimal::AAnimal()
 {
-	this->_brain = new Brain();
-	this->_type = "Animal";
-	std::cout << "Called Animal default constructor" << std::endl;
+	this->_type = "AAnimal";
+	std::cout << "Called AAnimal default constructor" << std::endl;
 }
 
-Animal::Animal(const Animal& a): _type(a.getType()), _brain(new Brain())
+AAnimal::AAnimal(const AAnimal& a): _type(a.getType())
 {
-	std::cout << "Called Animal copy constructor" << std::endl;
+	std::cout << "Called AAnimal copy constructor" << std::endl;
 }
 
-Animal&	Animal::operator=(const Animal& a)
+AAnimal&	AAnimal::operator=(const AAnimal& a)
 {
 	if (this != &a)
 	{
-		delete this->_brain;
-		_brain = new Brain();
 		this->_type = a.getType();
-		std::cout << "Called Animal copy assignment constructor" << std::endl;
+		std::cout << "Called AAnimal copy assignment constructor" << std::endl;
 	}
 	return (*this);
 }
 
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
-	delete _brain;
-	std::cout << "Called Animal destructor" << std::endl;
+	std::cout << "Called AAnimal destructor" << std::endl;
 }
 
-void	Animal::makeSound(void) const
+void	AAnimal::makeSound(void) const
 {
 	std::cout << "Abstract animal sound" << std::endl;
 }
 
-std::string Animal::getType(void) const
+std::string AAnimal::getType(void) const
 {
 	return (this->_type);
 }
