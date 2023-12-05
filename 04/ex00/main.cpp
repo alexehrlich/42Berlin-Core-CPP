@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:23:30 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/11/29 17:01:57 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:29:22 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int main()
 	j->makeSound();
 	k->makeSound(); //is wrong, will output the wrong animal sound
 	//j->makeDogThings - does not work, because its of type Animal
+	((Dog *)j)->makeDogThings(); //I can cast the animla to a dog because it was created with new Dog()
 	d->makeSound();
 	d->makeDogThings();
 	meta->makeSound();
