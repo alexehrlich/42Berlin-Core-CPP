@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:36:49 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/06 15:03:50 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:08:49 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
 		std::cout << a;
 		try
 		{
-			a.decreaseGrade();
+			a.increaseGrade();
 			std::cout << a;
 		}
 		catch(const std::exception& e)
@@ -29,7 +29,7 @@ int main()
 		}
 		try
 		{
-			a.increaseGrade();
+			a.decreaseGrade();
 			std::cout << a;
 		}
 		catch(const std::exception& e)
@@ -45,6 +45,16 @@ int main()
 	try
 	{
 		Bureaucrat	b("Jeff", 151);
+		std::cout << b;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	try
+	{
+		Bureaucrat	b("John", 0);
 		std::cout << b;
 	}
 	catch(const std::exception& e)
