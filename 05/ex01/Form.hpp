@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:17:25 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/06 15:51:34 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/08 10:28:23 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,28 @@
 #include <stdexcept>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
+	class AlreadySignedException: public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
+	
+	class GradeTooHighException: public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
+
+	class GradeTooLowException: public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
+
 	public:
 		Form(std::string name, int sign_grad_req, int exec_grade_req);
 		Form(const Form& f);
@@ -29,7 +49,7 @@ class Form
 		int			getReqSignGrade() const;
 		int			getReqExecGrade() const;
 
-		void	getSigned(const Bureaucrat& b) throw();
+		void		beSigned(const Bureaucrat& b);
 
 	private:
 		Form();

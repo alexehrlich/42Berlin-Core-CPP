@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:14:16 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/06 15:28:33 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/08 10:09:30 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,22 @@
 
 # include <iostream>
 #include <stdexcept>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
 	class GradeTooHighException: public std::exception
 	{
-		virtual const char* what() const throw()
-		{
-			return "Grade cannot be set: Too high";
-		}
+		public:
+			virtual const char* what() const throw();
 	};
 
 	class GradeTooLowException: public std::exception
 	{
-	public:
-		virtual const char* what() const throw()
-		{
-			return "Grade cannot be set: Too low";
-		}
+		public:
+			virtual const char* what() const throw();
 	};
 	
 	public:
@@ -45,7 +43,7 @@ class Bureaucrat
 		int					getGrade() const;
 		void				increaseGrade();
 		void				decreaseGrade();
-		void				signForm() const;
+		void				signForm(Form& f) const;
 	
 	private:
 		Bureaucrat();

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:22:42 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/06 15:31:30 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:36:49 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+/*		CONSTRUCTION - DESTRUCTION						*/
 
 Bureaucrat::Bureaucrat() {}
 
@@ -37,6 +39,24 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& b)
 	return (*this);
 }
 
+Bureaucrat::~Bureaucrat()
+{
+	std::cout << "Destroyed " << _name << std::endl;
+}
+
+/*		CUSTOM EXCEPTION							*/
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade cannot be set: Too high";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade cannot be set: Too low";
+}
+
+
+/*		GETTER										*/
 const std::string	Bureaucrat::getName() const
 {
 	return (_name);
@@ -47,6 +67,7 @@ int	Bureaucrat::getGrade() const
 	return (_grade);
 }
 
+/*		METHODS						*/
 void	Bureaucrat::increaseGrade()
 {
 	if (_grade == 1)
@@ -63,15 +84,21 @@ void	Bureaucrat::decreaseGrade()
 		_grade++;
 }
 
-void	Bureaucrat::signForm() const
+void	Bureaucrat::signForm(Form& f) const
 {
-	std::cout << _name << " signed ???" << std::endl;
+	try
+	{
+		f.beSigned(*this);
+		std::cout << _name << " signed Form: " << f.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << _name << " couldn't sign " << f.getName() << ". Reason: " << e.what() << std::endl;
+	}
+	
 }
 
-Bureaucrat::~Bureaucrat()
-{
-	std::cout << "Destroyed " << _name << std::endl;
-}
+/*		OPERATOR OVERLOADS									*/
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
 {
