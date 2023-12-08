@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:14:16 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/06 14:48:09 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/08 09:26:21 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,13 @@ class Bureaucrat
 {
 	class GradeTooHighException: public std::exception
 	{
-		virtual const char* what() const throw()
-		{
-			return "Grade cannot be set: Too high";
-		}
+		virtual const char* what() const throw();
 	};
 
 	class GradeTooLowException: public std::exception
 	{
 	public:
-		virtual const char* what() const throw()
-		{
-			return "Grade cannot be set: Too low";
-		}
+		virtual const char* what() const throw();
 	};
 	
 	public:
