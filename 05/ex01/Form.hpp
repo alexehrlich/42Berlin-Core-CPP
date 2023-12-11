@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:17:25 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/08 10:28:23 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:15:28 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORMS_HPP
-# define FORMS_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 #include <iostream>
 #include <stdexcept>
@@ -53,7 +53,7 @@ class Form
 
 	private:
 		Form();
-		Form&	operator=(const Form& f);
+		Form&				operator=(const Form& f);
 		const std::string	_name;
 		bool				_isSigned;
 		const int			_sign_grade_req;
