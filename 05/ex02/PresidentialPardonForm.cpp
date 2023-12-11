@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:34:39 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/11 15:15:22 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:06:41 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,6 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 void	PresidentialPardonForm::execute(const Bureaucrat& executor) const
 {
-	try
-	{
-		AForm::_execute(executor);
-		std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	AForm::_execute(executor);
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

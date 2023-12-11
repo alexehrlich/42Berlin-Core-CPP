@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:34:39 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/11 15:15:29 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:06:35 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,11 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
-
-	try
-	{
-		AForm::_execute(executor);
-		std::cout << "DRILLLLLL" << std::endl;
-		srand(time(NULL));
-		if (rand() % 2 == 0)
-			std::cout << _target <<" has been robotomized successfully" << std::endl;
-		else
-			std::cout << _target <<" failed to be robotomized" << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	AForm::_execute(executor);
+	std::cout << "DRILLLLLL" << std::endl;
+	srand(time(NULL));
+	if (rand() % 2 == 0)
+		std::cout << _target <<" has been robotomized successfully" << std::endl;
+	else
+		std::cout << _target <<" failed to be robotomized" << std::endl;
 }
