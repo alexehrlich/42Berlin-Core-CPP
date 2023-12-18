@@ -6,26 +6,12 @@
 /*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 09:38:28 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/18 10:34:04 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/18 10:37:11 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 #include <iostream>
-
-template <typename T>
-void	printElement(const T& elem)
-{
-	std::cout << elem << std::endl;
-}
-
-template <typename T>
-void	squareElement(T& elem)
-{
-	elem *= elem;
-}
-
-
 
 int main( void ) 
 {
