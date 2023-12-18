@@ -6,11 +6,11 @@
 /*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 09:38:28 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/18 09:51:49 by aehrlich         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:55:45 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FuncTemplates.hpp"
+#include "whatever.hpp"
 #include <iostream>
 
 int main( void ) 
