@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:30:32 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/04 23:30:42 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/05 09:14:08 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <sstream>
 #include <string>
 #include <fstream>
+#include <cstdlib>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -31,7 +32,7 @@ BitcoinExchange::BitcoinExchange()
 		std::istringstream	iss(line);
 		std::getline(iss, date, ',');
 		std::getline(iss, exchangeRate, ',');
-		_database[date] = std::stof(exchangeRate);
+		_database[date] = std::strtod(exchangeRate.c_str(), NULL);
 	}
 	databaseInFile.close();
 }
@@ -71,7 +72,7 @@ void	BitcoinExchange::calculate(std::ifstream& input)
 		std::string delim = line.substr(10, 3);
 		std::string valString = line.substr(13);
 		char*		endptr;
-		double		value = std::strtof(valString.c_str(), &endptr);
+		double		value = std::strtod(valString.c_str(), &endptr);
 		if (!_validDate(date) || delim != " | " || *endptr != '\0')
 			std::cout << "Error: bad input => " << line << std::endl;
 		else if (value < 0)
