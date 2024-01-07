@@ -6,11 +6,11 @@
 #    By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:23:35 by aehrlich          #+#    #+#              #
-#    Updated: 2024/01/05 11:49:24 by aehrlich         ###   ########.fr        #
+#    Updated: 2024/01/07 16:00:28 by aehrlich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= RPN
+NAME		= PmergeMe
 
 CC			= c++
 CFLAGS		= -Werror -Wextra -Wall -std=c++98 -ggdb
