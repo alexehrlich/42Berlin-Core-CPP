@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:35:50 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/08 10:43:20 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/08 11:38:02 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,18 @@ void	PmergeMe::_mergeSort(std::deque<std::pair<int, int> >& deque, int left, int
 	}
 }
 
+void insertIntoSortedDeque(std::deque<int>& sortedDeque, int newNumber) {
+	std::deque<int>::iterator it = sortedDeque.begin();
+
+	// Find the position to insert the new number
+	while (it != sortedDeque.end() && *it < newNumber) {
+		++it;
+	}
+
+	// Insert the new number at the found position
+	sortedDeque.insert(it, newNumber);
+}
+
 void	PmergeMe::sortDeque()
 {
 	_startTimeDeque = clock();
@@ -137,7 +149,11 @@ void	PmergeMe::sortDeque()
 	std::deque<std::pair<int, int> >::iterator it;
 	for (it = pairs.begin(); it != pairs.end(); ++it)
 		_sortedDeque.push_back(it->first);
-	std::deque<int>	jacobsthal = _generateJacobsthalDeque(pairs.size() - 1);
+	std::deque<std::pair<int, int> >::iterator it1 = pairs.begin();
+	while(it1 != pairs.end())
+		insertIntoSortedDeque(_sortedDeque, (++it1)->second);
+	if (_struggler != -1)
+		insertIntoSortedDeque(_sortedDeque, _struggler);
 	_endTimeDeque = clock();
 }
 

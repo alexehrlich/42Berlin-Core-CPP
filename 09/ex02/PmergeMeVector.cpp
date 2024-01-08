@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:34:34 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/08 10:43:40 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/08 11:31:11 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,18 @@ void	PmergeMe::_mergeSort(std::vector<std::pair<int, int> >& vec, int left, int 
 	}
 }
 
+void insertIntoSortedVector(std::vector<int>& sortedVec, int newNumber) {
+	std::vector<int>::iterator it = sortedVec.begin();
+
+	// Find the position to insert the new number
+	while (it != sortedVec.end() && *it < newNumber) {
+		++it;
+	}
+
+	// Insert the new number at the found position
+	sortedVec.insert(it, newNumber);
+}
+
 void	PmergeMe::sortVector()
 {
 	_startTimeVec = clock();
@@ -137,13 +149,15 @@ void	PmergeMe::sortVector()
 	std::vector<std::pair<int, int> >::iterator it;
 	for (it = pairs.begin(); it != pairs.end(); ++it)
 		_sortedVec.push_back(it->first);
-	std::vector<int>	jacobsthal = _generateJacobsthalVec(pairs.size() - 1);
+	std::vector<std::pair<int, int> >::iterator it1 = pairs.begin();
+	while(it1 != pairs.end())
+		insertIntoSortedVector(_sortedVec, (++it1)->second);
+	if (_struggler != -1)
+		insertIntoSortedVector(_sortedVec, _struggler);
 	_endTimeVec = clock();
 }
 
 //Printing
-
-//utils function to print
 void	PmergeMe::_printVector(std::vector<int>& vec)
 {
 	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
