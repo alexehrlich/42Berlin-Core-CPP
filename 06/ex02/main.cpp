@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:47:24 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/15 11:40:33 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:59:21 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,8 @@ int main(void)
 	std::cout << std::endl;
 	identify(rand);
 	identify(*rand);
+	delete(base);
+	delete(d);
+	delete(rand);
 	return (0);
 }
