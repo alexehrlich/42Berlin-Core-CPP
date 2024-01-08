@@ -1,85 +1,65 @@
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
+# include <cmath>
 #include "Array.hpp"
 
-#define MAX_VAL 750
-int main(int, char**)
+#include "Array.hpp"
+
+#define MAX_VAL 20
+
+int main(void)
 {
 	Array<int> numbers(MAX_VAL);
-	int* mirror = new int[MAX_VAL];
-
-	Array<std::string> emptyStrArr;
-	Array<std::string> strArr(5);
-	Array<std::string> copyStrArr = strArr;
-
-	try
-	{
-		emptyStrArr[0] = "Hi";
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	std::cout << copyStrArr << std::endl;
-	std::cout << emptyStrArr << std::endl;
-	copyStrArr = emptyStrArr;
-	std::cout << copyStrArr << std::endl;
-	try
-	{
-		strArr[0] = "Hello";
-		strArr[1] = "World";
-		strArr[2] = "!";
-		strArr[3] = ":)";
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	std::cout << strArr << std::endl;
+	Array<char> letters(MAX_VAL);
+	Array<int> test;
+	Array<std::string> phrases(MAX_VAL);
 
 	srand(time(NULL));
 	for (int i = 0; i < MAX_VAL; i++)
 	{
-		const int value = rand();
+		const int value = rand() / pow(10, 8);
 		numbers[i] = value;
-		mirror[i] = value;
-	}	
-	//SCOPE
-	{
-		Array<int> tmp = numbers;
-		Array<int> test(tmp);
 	}
 
+	char letter = 'a';
 	for (int i = 0; i < MAX_VAL; i++)
 	{
-		if (mirror[i] != numbers[i])
-		{
-			std::cerr << "didn't save the same value!!" << std::endl;
-			return 1;
-		}
-	}
-	try
-	{
-		std::cout << "Try to set at -2" << std::endl;
-		numbers[-2] = 0;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		std::cout << "Try to set at 750" << std::endl;
-		numbers[MAX_VAL] = 0;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
+		letters[i] = letter;
+		letter++;
 	}
 
+	std::string phrase = "nice";
 	for (int i = 0; i < MAX_VAL; i++)
 	{
-		numbers[i] = rand();
+		phrases[i] = phrase;
+		phrase.append("e");
 	}
-	delete [] mirror;//
+
+	Array<int> clonedArrayNumbers(numbers);
+	Array<char> clonedArrayLetters = letters;
+
+	std::cout << numbers << std::endl;
+	std::cout << letters << std::endl;
+	std::cout << clonedArrayNumbers << std::endl;
+	std::cout << clonedArrayLetters << std::endl;
+	numbers[0] = 10000;
+	letters[0] = 'z';
+	std::cout << numbers << std::endl;
+	std::cout << letters << std::endl;
+	std::cout << clonedArrayNumbers << std::endl;
+	std::cout << clonedArrayLetters << std::endl;
+	std::cout << phrases << std::endl;
+
+	try {
+		std::cout << "Test is: " << numbers[2] << std::endl;
+		std::cout << "Test is: " << letters[2] << std::endl;
+		std::cout << "Test is: " << letters[0] << std::endl;
+		std::cout << "Test is: " << letters[-7] << std::endl;
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	
 	return 0;
 }

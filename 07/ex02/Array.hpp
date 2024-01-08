@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:48:29 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/19 13:34:41 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:40:48 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,53 +18,14 @@
 template<typename T> class Array
 {
 	public:
-		Array(): _elements(NULL), _size(0) {}
+		Array();
+		Array(unsigned int size);
+		Array(const Array& a);
+		Array&	operator=(const Array& a);
+		~Array();;
 		
-		Array(unsigned int size): _elements(new T[size]), _size(size) {}
-		
-		Array(const Array& a)
-		{
-			if (this == &a)
-				return ;
-			_size = a.size();
-			_elements = new T[a.size()];
-			for (unsigned int i = 0; i < a.size(); i++)
-				_elements[i] = a._elements[i];
-		}
-		
-		Array&	operator=(const Array& a)
-		{
-			if (this == &a)
-				return (*this);
-			if (_elements)
-				delete [] _elements;
-			_size = a.size();
-			_elements = new T[a.size()];
-			for (unsigned int i = 0; i < a.size(); i++)
-				_elements[i] = a._elements[i];
-			return (*this);
-		}
-		
-		~Array()
-		{
-			if (_elements)
-				delete [] _elements;
-		}
-		
-		T&	operator[](unsigned int idx) const
-		{
-			
-			if (!_elements)
-				throw EmptyArrayException();
-			if (idx >= this->_size)
-				throw OutOfBoundException();
-			return _elements[idx];
-		}
-
-		unsigned int	size() const
-		{
-			return (_size);
-		}
+		T&	operator[](unsigned int idx) const;
+		unsigned int	size() const;
 
 		class OutOfBoundException: public std::exception
 		{
@@ -96,5 +57,7 @@ std::ostream&	operator<<(std::ostream& os, const Array<T>& a)
 		os << "array[" << i << "]: " << a[i] << std::endl;
 	return (os);
 }
+
+# include "Array.tpp"
 
 #endif
