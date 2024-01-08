@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:36:49 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/11 15:02:05 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:41:51 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int main()
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << "ULLA" << e.what() << '\n';
+			std::cerr << e.what() << '\n';
 		}
 		
 	}
