@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:52:31 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/07 16:50:48 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/08 10:44:00 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	pm.sortVector();
+	pm.sortDeque();
+	pm.printResults();
 	return (0);
 }

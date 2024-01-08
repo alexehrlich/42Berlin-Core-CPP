@@ -6,7 +6,7 @@
 #    By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:23:35 by aehrlich          #+#    #+#              #
-#    Updated: 2024/01/07 16:00:28 by aehrlich         ###   ########.fr        #
+#    Updated: 2024/01/08 09:36:28 by aehrlich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		= -Werror -Wextra -Wall -std=c++98 -ggdb
 
 OBJDIR		= objs
 
-SRCS		= main.cpp PmergeMe.cpp
+SRCS		= main.cpp PmergeMe.cpp PmergeMeVector.cpp PmergeMeDeque.cpp
 OBJS		:= $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
 all: $(NAME)
