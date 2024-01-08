@@ -6,25 +6,38 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:34:34 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/08 11:31:11 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:08:10 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-std::vector<int>	PmergeMe::_generateJacobsthalVec(int n) {
-	std::vector<int> jacobsthalSeq;
 
-	// First two terms of Jacobsthal sequence
-	jacobsthalSeq.push_back(0);
-	jacobsthalSeq.push_back(1);
-
-	// Generate the Jacobsthal sequence up to the given limit
-	for (int i = 2; i <= n; ++i) {
-		int current = jacobsthalSeq[i - 1] + 2 * jacobsthalSeq[i - 2];
-		jacobsthalSeq.push_back(current);
+//Printing
+void	PmergeMe::_printVector(std::vector<int>& vec)
+{
+	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
+		std::cout << *it << " ";
 	}
-	return jacobsthalSeq;
+	std::cout << std::endl;
+}
+
+bool	PmergeMe::_isSortedVector()
+{
+	std::vector<int>::iterator	it = _unsortedVec.begin();
+	int							current;
+	int							next;
+	if (_unsortedVec.size() == 1)
+		return (true);
+	while (it != _unsortedVec.end())
+	{
+		current = *it;
+		next = *(++it);
+		if (it != _unsortedVec.end() && current > next)
+			return (false);
+	}
+		
+	return (true);
 }
 
 std::vector<std::pair<int, int> >	PmergeMe::_makeVectorPairs()
@@ -131,37 +144,86 @@ void insertIntoSortedVector(std::vector<int>& sortedVec, int newNumber) {
 	sortedVec.insert(it, newNumber);
 }
 
+bool	insertionOrderCompleted(std::vector<int> insertionOrderVec, int maxIndex)
+{
+	int	i = maxIndex;
+	
+	for (std::vector<int>::iterator it = insertionOrderVec.begin(); it != insertionOrderVec.end(); it++)
+		if (*it <= maxIndex)
+			i--;
+	return (--i == 0);
+}
+
+void	PmergeMe::_generateNextJacobsthalNumberVec(std::vector<int>& sequence)
+{
+	if (sequence.empty())
+	{
+		sequence.push_back(0);
+		sequence.push_back(1);
+		sequence.push_back(1);
+	}
+	// Generate the Jacobsthal sequence up to the given limit
+	std::vector<int>::reverse_iterator rit = sequence.rbegin();
+
+	sequence.push_back(*rit + 2 * *(++rit));
+}
+
+std::vector<int>	PmergeMe::_generateInsertionOrderVec(int maxIndex)
+{
+	std::vector<int>	jacobsthalNumberVec;
+	std::vector<int>	insertionOrderVec;
+	int	lastJN;
+	int preLastJN;
+
+	_generateNextJacobsthalNumberVec(jacobsthalNumberVec);									//genertat the numbers 0 1 1 3
+	insertionOrderVec.push_back(jacobsthalNumberVec.back());								//push the 3 to the order vector
+	while(!insertionOrderCompleted(insertionOrderVec, maxIndex))							//as long the order vector does not contain all necessary idx, create them
+	{
+		lastJN = jacobsthalNumberVec[jacobsthalNumberVec.size() - 1];
+		preLastJN = jacobsthalNumberVec[jacobsthalNumberVec.size() - 2];
+		while (--lastJN > preLastJN)														//generate the indexes between the current jacN and the last (excluding the actual ones)
+		{
+			insertionOrderVec.push_back(lastJN);
+			if (insertionOrderCompleted(insertionOrderVec, maxIndex))						//if all indices are there, we are done
+				return (insertionOrderVec);
+		}
+		_generateNextJacobsthalNumberVec(jacobsthalNumberVec);								//generate a new jacN
+		insertionOrderVec.push_back(jacobsthalNumberVec.back());							//append it to the Order
+	}
+	return (insertionOrderVec);
+}
+
 void	PmergeMe::sortVector()
 {
-	_startTimeVec = clock();
-	if (_isSorted())
+	_startTimeVec = clock();																//Start the timer for time measurment
+	if (_isSortedVector())
+	{
+		_sortedVec = _unsortedVec;
+		_endTimeVec = clock();
 		return ;
+	}
 	if (_unsortedVec.size() == 2)
 	{
 		_sortedVec.push_back(_unsortedVec.back());
 		_sortedVec.push_back(_unsortedVec.front());
+		_endTimeVec = clock();
 		return ;
 	}
-	std::vector<std::pair<int, int> >	pairs = _makeVectorPairs();
-	_sortVectorPairs(pairs);
-	_mergeSort(pairs, 0, pairs.size() - 1);
-	_sortedVec.push_back(pairs.front().second);
+	std::vector<std::pair<int, int> >	pairs = _makeVectorPairs();							//Split the vector into pairs of two
+	_sortVectorPairs(pairs);																//Sort the pairs within in ascending order
+	_mergeSort(pairs, 0, pairs.size() - 1);													//sort the pair container recursively with merge sort
+	_sortedVec.push_back(pairs.front().second);												//insert the first element of the pend to the main chain
 	std::vector<std::pair<int, int> >::iterator it;
-	for (it = pairs.begin(); it != pairs.end(); ++it)
+	for (it = pairs.begin(); it != pairs.end(); ++it)										//push the all greater values to the main chain, since they are now sorted
 		_sortedVec.push_back(it->first);
-	std::vector<std::pair<int, int> >::iterator it1 = pairs.begin();
-	while(it1 != pairs.end())
-		insertIntoSortedVector(_sortedVec, (++it1)->second);
-	if (_struggler != -1)
-		insertIntoSortedVector(_sortedVec, _struggler);
-	_endTimeVec = clock();
-}
-
-//Printing
-void	PmergeMe::_printVector(std::vector<int>& vec)
-{
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
-		std::cout << *it << " ";
+	std::vector<int> insertionOrderVec = _generateInsertionOrderVec(pairs.size());			//generate an order to insert the rest of the pending based on jacobsthal numbers
+	std::vector<int>::iterator it1;
+	for (it1 = insertionOrderVec.begin(); it1 != insertionOrderVec.end(); ++it1)			//insert the pending elements if the jacobsthal value is valid
+	{
+		if (static_cast<unsigned long>(*it1) <= pairs.size())
+			insertIntoSortedVector(_sortedVec, pairs[*it1 - 1].second);
 	}
-	std::cout << std::endl;
+	if (_struggler != -1)																	//if there was a struggler (odd number of elements) insert it at the end
+		insertIntoSortedVector(_sortedVec, _struggler);
+	_endTimeVec = clock();																	//stop the timer 
 }

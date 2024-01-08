@@ -5,26 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 09:35:50 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/08 11:38:02 by aehrlich         ###   ########.fr       */
+/*   Created: 2024/01/08 09:34:34 by aehrlich          #+#    #+#             */
+/*   Updated: 2024/01/08 16:08:23 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-std::deque<int>	PmergeMe::_generateJacobsthalDeque(int n) {
-	std::deque<int> jacobsthalSeq;
 
-	// First two terms of Jacobsthal sequence
-	jacobsthalSeq.push_back(0);
-	jacobsthalSeq.push_back(1);
-
-	// Generate the Jacobsthal sequence up to the given limit
-	for (int i = 2; i <= n; ++i) {
-		int current = jacobsthalSeq[i - 1] + 2 * jacobsthalSeq[i - 2];
-		jacobsthalSeq.push_back(current);
+//Printing
+void	PmergeMe::_printDeque(std::deque<int>& deque)
+{
+	for (std::deque<int>::iterator it = deque.begin(); it != deque.end(); ++it) {
+		std::cout << *it << " ";
 	}
-	return jacobsthalSeq;
+	std::cout << std::endl;
+}
+
+bool	PmergeMe::_isSortedDeque()
+{
+	std::deque<int>::iterator	it = _unsortedDeque.begin();
+	int							current;
+	int							next;
+	if (_unsortedDeque.size() == 1)
+		return (true);
+	while (it != _unsortedDeque.end())
+	{
+		current = *it;
+		next = *(++it);
+		if (it != _unsortedDeque.end() && current > next)
+			return (false);
+	}
+		
+	return (true);
 }
 
 std::deque<std::pair<int, int> >	PmergeMe::_makeDequePairs()
@@ -65,17 +78,17 @@ static void	mergeDeque(std::deque<std::pair<int, int> >& deque, int left, int mi
 	int n1 = middle - left + 1;
 	int n2 = right - middle;
 
-	// Create temporary dequetors
+	// Create temporary deques
 	std::deque<std::pair<int, int> > leftHalf(n1);
 	std::deque<std::pair<int, int> > rightHalf(n2);
 
-	// Copy data to temporary dequetors leftHalf[] and rightHalf[]
+	// Copy data to temporary deques leftHalf[] and rightHalf[]
 	for (int i = 0; i < n1; i++)
 		leftHalf[i] = deque[left + i];
 	for (int j = 0; j < n2; j++)
 		rightHalf[j] = deque[middle + 1 + j];
 
-	// Merge the temporary dequetors back into deque[left...right]
+	// Merge the temporary deques back into deque[left...right]
 	int i = 0;
 	int j = 0;
 	int k = left;
@@ -131,15 +144,69 @@ void insertIntoSortedDeque(std::deque<int>& sortedDeque, int newNumber) {
 	sortedDeque.insert(it, newNumber);
 }
 
+bool	insertionOrderCompleted(std::deque<int> insertionOrderDeque, int maxIndex)
+{
+	int	i = maxIndex;
+	
+	for (std::deque<int>::iterator it = insertionOrderDeque.begin(); it != insertionOrderDeque.end(); it++)
+		if (*it <= maxIndex)
+			i--;
+	return (--i == 0);
+}
+
+void	PmergeMe::_generateNextJacobsthalNumberDeque(std::deque<int>& sequence)
+{
+	if (sequence.empty())
+	{
+		sequence.push_back(0);
+		sequence.push_back(1);
+		sequence.push_back(1);
+	}
+	// Generate the Jacobsthal sequence up to the given limit
+	std::deque<int>::reverse_iterator rit = sequence.rbegin();
+
+	sequence.push_back(*rit + 2 * *(++rit));
+}
+
+std::deque<int>	PmergeMe::_generateInsertionOrderDeque(int maxIndex)
+{
+	std::deque<int>	jacobsthalNumberDeque;
+	std::deque<int>	insertionOrderDeque;
+	int	lastJN;
+	int preLastJN;
+
+	_generateNextJacobsthalNumberDeque(jacobsthalNumberDeque); //genertat the numbers 0 1 1 3
+	insertionOrderDeque.push_back(jacobsthalNumberDeque.back()); //push the 3 to the order deque
+	while(!insertionOrderCompleted(insertionOrderDeque, maxIndex)) //as long the order deque does not contain all necessary idx, create them
+	{
+		lastJN = jacobsthalNumberDeque[jacobsthalNumberDeque.size() - 1];
+		preLastJN = jacobsthalNumberDeque[jacobsthalNumberDeque.size() - 2];
+		while (--lastJN > preLastJN)
+		{
+			insertionOrderDeque.push_back(lastJN);
+			if (insertionOrderCompleted(insertionOrderDeque, maxIndex))
+				return (insertionOrderDeque);
+		}
+		_generateNextJacobsthalNumberDeque(jacobsthalNumberDeque);
+		insertionOrderDeque.push_back(jacobsthalNumberDeque.back());
+	}
+	return (insertionOrderDeque);
+}
+
 void	PmergeMe::sortDeque()
 {
 	_startTimeDeque = clock();
-	if (_isSorted())
+	if (_isSortedDeque())
+	{
+		_sortedDeque = _unsortedDeque;
+		_endTimeDeque = clock();
 		return ;
+	}
 	if (_unsortedDeque.size() == 2)
 	{
 		_sortedDeque.push_back(_unsortedDeque.back());
 		_sortedDeque.push_back(_unsortedDeque.front());
+		_endTimeDeque = clock();
 		return ;
 	}
 	std::deque<std::pair<int, int> >	pairs = _makeDequePairs();
@@ -149,21 +216,14 @@ void	PmergeMe::sortDeque()
 	std::deque<std::pair<int, int> >::iterator it;
 	for (it = pairs.begin(); it != pairs.end(); ++it)
 		_sortedDeque.push_back(it->first);
-	std::deque<std::pair<int, int> >::iterator it1 = pairs.begin();
-	while(it1 != pairs.end())
-		insertIntoSortedDeque(_sortedDeque, (++it1)->second);
+	std::deque<int> insertionOrderDeque = _generateInsertionOrderDeque(pairs.size());
+	std::deque<int>::iterator it1;
+	for (it1 = insertionOrderDeque.begin(); it1 != insertionOrderDeque.end(); ++it1)
+	{
+		if (static_cast<unsigned long>(*it1) <= pairs.size())
+			insertIntoSortedDeque(_sortedDeque, pairs[*it1 - 1].second);
+	}
 	if (_struggler != -1)
 		insertIntoSortedDeque(_sortedDeque, _struggler);
 	_endTimeDeque = clock();
-}
-
-//Printing
-
-//utils function to print
-void	PmergeMe::_printDeque(std::deque<int>& deque)
-{
-	for (std::deque<int>::iterator it = deque.begin(); it != deque.end(); ++it) {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
 }

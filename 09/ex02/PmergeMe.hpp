@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:24:31 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/08 10:41:13 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:47:47 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,31 @@ class PmergeMe
 
 	private:
 		int									_struggler;
-		bool								_isSorted();
 
 		std::vector<int>					_unsortedVec;
 		std::vector<int>					_sortedVec;
 		clock_t								_startTimeVec;
 		clock_t								_endTimeVec;
+		bool								_isSortedVector();
 		std::vector<std::pair<int, int> >	_makeVectorPairs();
 		void								_sortVectorPairs(std::vector<std::pair<int, int> >& pairVec);
 		void								_mergeSort(std::vector<std::pair<int, int> >& vec, int left, int right);
 		void								_printVector(std::vector<int>& vec);
-		std::vector<int>					_generateJacobsthalVec(int n);
+		void								_generateNextJacobsthalNumberVec(std::vector<int>& sequence);
+		std::vector<int>					_generateInsertionOrderVec(int containerSize);
 
 		std::deque<int>						_unsortedDeque;
 		std::deque<int>						_sortedDeque;
 		clock_t								_startTimeDeque;
 		clock_t								_endTimeDeque;
+		bool								_isSortedDeque();
 		std::deque<std::pair<int, int> >	_makeDequePairs();
-		void								_sortDequePairs(std::deque<std::pair<int, int> >& pairVec);
-		void								_mergeSort(std::deque<std::pair<int, int> >& vec, int left, int right);
-		void								_printDeque(std::deque<int>& vec);
-		std::deque<int>						_generateJacobsthalDeque(int n);
+		void								_sortDequePairs(std::deque<std::pair<int, int> >& pairDeque);
+		void								_mergeSort(std::deque<std::pair<int, int> >& deque, int left, int right);
+		void								_printDeque(std::deque<int>& deque);
+		void								_generateNextJacobsthalNumberDeque(std::deque<int>& sequence);
+		std::deque<int>						_generateInsertionOrderDeque(int containerSize);
+
 
 	class InputErrorException: public std::exception
 	{

@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:33:30 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/08 11:39:22 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:06:54 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,10 @@ void	PmergeMe::printResults()
 {
 	std::cout << "Before:\t"; _printVector(_unsortedVec);
 	std::cout << "After:\t"; _printVector(_sortedVec);
-	//std::cout << "After:\t"; _printDeque(_sortedDeque);
+	std::cout << "After:\t"; _printDeque(_sortedDeque);
 	double vectorTime = static_cast<double>(_endTimeVec - _startTimeVec) / CLOCKS_PER_SEC * 1000000.0;
 	double dequeTime = static_cast<double>(_endTimeDeque - _startTimeDeque) / CLOCKS_PER_SEC * 1000000.0;
 	
 	std::cout << "Time to process a range of " << _unsortedVec.size() << " elements with std::vector<int>:\t" << vectorTime << " us" << std::endl;
 	std::cout << "Time to process a range of " << _unsortedVec.size() << " elements with std::deque<int> :\t" << dequeTime << " us" << std::endl;
-}
-
-bool	PmergeMe::_isSorted()
-{
-	std::vector<int>::iterator	it = _unsortedVec.begin();
-	int							current;
-	int							next;
-	if (_unsortedVec.size() == 1)
-		return (true);
-	while (it != _unsortedVec.end())
-	{
-		current = *it;
-		next = *(++it);
-		if (it != _unsortedVec.end() && current > next)
-			return (false);
-	}
-		
-	return (true);
 }
