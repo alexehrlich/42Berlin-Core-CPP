@@ -64,7 +64,7 @@ void	identify(Base& b)
 		A derived = dynamic_cast<A&>(b);
 		std::cout << "A" << std::endl;
 	}
-	catch(std::exception e)
+	catch(std::exception& e)
 	{
 		try
 		{
