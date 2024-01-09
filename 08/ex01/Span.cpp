@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:18:03 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/09 08:58:58 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:49:27 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ Span::~Span() {}
 
 void	Span::addNumberRange(std::list<int>::iterator begin, std::list<int>::iterator end)
 {
-	//what if begin and and is swapped?
-	//make sure, that int iterators are passed
 	while (begin != end)
 	{
 		addNumber(*begin);
