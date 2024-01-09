@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:50:03 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/29 12:14:48 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/09 09:11:54 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main() {
 	try
 	{
 		sp.addNumber(6);
-		sp.addNumber(0);
+		sp.addNumber(-1);
 		sp.addNumber(17);
 		sp.addNumber(9);
 		sp.addNumber(20);

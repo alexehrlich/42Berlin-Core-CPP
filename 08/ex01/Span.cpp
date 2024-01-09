@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:18:03 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/29 12:14:33 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/09 08:58:58 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span(unsigned int N): _size(N) {}
+Span::Span(unsigned int N)
+{
+	_numbers.reserve(N);
+	std::cout << "Created Span with capacity " << _numbers.capacity() << std::endl;
+}
 
 Span::~Span() {}
 
@@ -22,8 +26,6 @@ void	Span::addNumberRange(std::list<int>::iterator begin, std::list<int>::iterat
 	//make sure, that int iterators are passed
 	while (begin != end)
 	{
-		if (_numbers.size() == _size)
-			throw SpanFullException();
 		addNumber(*begin);
 		begin++;
 	}
@@ -31,7 +33,7 @@ void	Span::addNumberRange(std::list<int>::iterator begin, std::list<int>::iterat
 
 void	Span::addNumber(int n)
 {
-	if (_numbers.size() == _size)
+	if (_numbers.size() == _numbers.capacity())
 		throw SpanFullException();
 	if (_numbers.empty())
 		_numbers.insert(_numbers.begin(), n);
@@ -51,7 +53,7 @@ void	Span::addNumber(int n)
 
 int	Span::shortestSpan() const
 {
-	if (_numbers.capacity() <= 1)
+	if (_numbers.size() <= 1)
 		throw NoSpanException();
 	std::vector<int>::const_iterator first = _numbers.begin();
 	return (std::abs(*first - *(++first)));

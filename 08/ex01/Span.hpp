@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:09:24 by aehrlich          #+#    #+#             */
-/*   Updated: 2023/12/29 12:14:42 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/09 08:51:24 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ class Span
 		Span(const Span& s);
 		Span&	operator=(const Span& s);
 
-		unsigned int		_size;
 		std::vector<int>	_numbers;
 
 		class SpanFullException: public std::exception
