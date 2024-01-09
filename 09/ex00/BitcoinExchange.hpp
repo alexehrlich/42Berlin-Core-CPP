@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 19:20:20 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/04 22:47:09 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:41:59 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,21 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange& rhs);
 		BitcoinExchange&	operator=(const BitcoinExchange& rhs);
 
+		void	readDB(std::string filename);
 		void	calculate(std::ifstream& input);
 
 	private:
 		std::map<std::string, double>	_database;
 		bool							_validDate(const std::string& date);
 		double							_getExchangeRate(const std::string& date);
+
+	class DBReadException: public std::exception
+	{
+		virtual const char*	what() const throw()
+		{
+			return "Could not open Database.";
+		}
+	};
 };
 
 #endif

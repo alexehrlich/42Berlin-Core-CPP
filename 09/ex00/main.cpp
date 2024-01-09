@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:50:03 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/05 09:25:11 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:56:20 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,17 @@ int main(int argc, char **argv)
 		std::cout << "Error: Too many arguments. Usage: ./btc <input.txt>" << std::endl;
 		return (0);
 	}
+	try
+	{
+		be.readDB("data.csv");
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		return (0);
+	}
 	input.open(argv[1]);
-	if (input.fail())
+	if (!input.is_open())
 	{
 		std::cout << "Error: Could not open file." << std::endl;
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:30:32 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/05 09:14:08 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:47:22 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,7 @@
 #include <fstream>
 #include <cstdlib>
 
-BitcoinExchange::BitcoinExchange()
-{
-	std::ifstream	databaseInFile;
-	std::string		line;
-	std::string		date;
-	std::string		exchangeRate;
-
-	databaseInFile.open("data.csv");
-	/*if (databaseInFile.fail())
-		return ; */
-	std::getline(databaseInFile, line); //skip first line
-	while (std::getline(databaseInFile, line))
-	{
-		std::istringstream	iss(line);
-		std::getline(iss, date, ',');
-		std::getline(iss, exchangeRate, ',');
-		_database[date] = std::strtod(exchangeRate.c_str(), NULL);
-	}
-	databaseInFile.close();
-}
+BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::~BitcoinExchange() {}
 
@@ -52,6 +33,27 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs)
 	return (*this);
 }
 
+void	BitcoinExchange::readDB(std::string filename)
+{
+	std::ifstream	databaseInFile;
+	std::string		line;
+	std::string		date;
+	std::string		exchangeRate;
+
+	databaseInFile.open(filename.c_str());
+	if (!databaseInFile.is_open())
+		throw BitcoinExchange::DBReadException();
+	std::getline(databaseInFile, line); //skip first line
+	while (std::getline(databaseInFile, line))
+	{
+		std::istringstream	iss(line);
+		std::getline(iss, date, ',');
+		std::getline(iss, exchangeRate, ',');
+		_database[date] = std::strtod(exchangeRate.c_str(), NULL);
+	}
+	databaseInFile.close();
+}
+
 void	BitcoinExchange::calculate(std::ifstream& input)
 {
 	std::string	line;
@@ -63,6 +65,11 @@ void	BitcoinExchange::calculate(std::ifstream& input)
 	}
 	while (std::getline(input, line))
 	{
+		if (line.empty())
+		{
+			std::cout << "Error: bad input => Empty line." << line << std::endl;
+			continue;
+		}
 		if (line.length() < 14)
 		{
 			std::cout << "Error: bad input => " << line << std::endl;
@@ -108,12 +115,6 @@ bool	BitcoinExchange::_validDate(const std::string& date)
 	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31 || dash1 != '-' || dash2 != '-')
 		return (false);
 	return (true);
-}
-
-int compareDates(const std::string& date1, const std::string& date2) {
-	if (date1 > date2)
-		return 1;
-	return 2;
 }
 
 double	BitcoinExchange::_getExchangeRate(const std::string& date)
