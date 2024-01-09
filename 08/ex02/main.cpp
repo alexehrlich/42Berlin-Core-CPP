@@ -3,55 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:50:03 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/03 19:09:58 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:06:22 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 
-int main()
-{
-	MutantStack<int> mstack;
-	mstack.push(5);
-	mstack.push(17);
-	std::cout << "TOP: " << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << "Size: " << mstack.size() << std::endl;
-	mstack.push(3); mstack.push(5); mstack.push(737); //[...] mstack.push(0);
-	std::cout << "TOP: " << mstack.top() << std::endl;
-	MutantStack<int>::iterator it = mstack.begin(); MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	while (it != ite) 
+#include <iostream>
+
+int main() {
+	//subject tests
 	{
-		std::cout << "Element: " << *it << std::endl;
+		std::cout << "RUNNING SUBJECT MAIN" << std::endl;
+		MutantStack<int> mstack;
+		mstack.push(5);
+		mstack.push(17);
+		std::cout << mstack.top() << std::endl;
+		mstack.pop();
+		std::cout << mstack.size() << std::endl;
+		mstack.push(3);
+		mstack.push(5);
+		mstack.push(737);
+		//[...]
+		mstack.push(0);
+		MutantStack<int>::iterator it = mstack.begin();
+		MutantStack<int>::iterator ite = mstack.end();
 		++it;
+		--it;
+		while (it != ite)
+		{
+		std::cout << *it << std::endl;
+		++it;
+		}
+		std::stack<int> s(mstack);
+		std::cout << std::endl;
 	}
 
-	std::cout << "\nCopied Stack" << std::endl;
-	MutantStack<int> cs(mstack);
-	MutantStack<int>::iterator it1 = cs.begin(); MutantStack<int>::iterator ite1 = cs.end();
-	while (it1 != ite1) 
+	//My tests
 	{
-		std::cout << "Element: " << *it1 << std::endl;
-		++it1;
-	}
+		std::cout << "RUNNING ADDITIONAL TESTS" << std::endl;
+		MutantStack<int> mutantStack;
 
-	std::cout << "\nCopied assigned Stack" << std::endl;
-	MutantStack<int> cas(mstack);
-	MutantStack<int>::iterator it2 = cas.begin(); MutantStack<int>::iterator ite2 = cas.end();
-	while (it2 != ite2) 
-	{
-		std::cout << "Element: " << *it2 << std::endl;
-		++it2;
-	}
+		mutantStack.push(10);
+		mutantStack.push(20);
+		mutantStack.push(30);
+		mutantStack.push(40);
+		mutantStack.push(50);
 
-	std::stack<int> ns(mstack);
-	std::cout << "\nNormal Stack initialized with mutant stack:" << std::endl;
-	std::cout << "Size: " << ns.size() << std::endl;
-	std::cout << "Top: " << ns.top() << std::endl;
+		std::cout << "Stack elements using iterators: ";
+		for (MutantStack<int>::iterator it = mutantStack.begin(); it != mutantStack.end(); ++it) {
+			std::cout << *it << " ";
+		}
+		std::cout << std::endl;
+
+		std::cout << "Stack elements in reverse order: ";
+		for (MutantStack<int>::reverse_iterator rit = mutantStack.rbegin(); rit != mutantStack.rend(); ++rit) {
+			std::cout << *rit << " ";
+		}
+		std::cout << std::endl;
+
+		const MutantStack<int>& constStack = mutantStack;
+		std::cout << "Stack elements using const iterators: ";
+		for (MutantStack<int>::const_iterator cit = constStack.begin(); cit != constStack.end(); ++cit) {
+			std::cout << *cit << " ";
+		}
+		std::cout << std::endl;
+	}
 	return 0;
 }

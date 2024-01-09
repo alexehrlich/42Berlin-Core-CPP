@@ -3,64 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aehrlich <aehrlich@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 16:39:43 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/03 19:02:37 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:10:50 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MUTANTSTACK_HPP
+#ifndef	MUTANTSTACK_HPP
 # define MUTANTSTACK_HPP
 
-#include <algorithm>
-#include <iostream>
 #include <stack>
+#include <iostream>
+#include <list>
 
 template <typename T>
-class MutantStack: public std::stack<T>
+class MutantStack : public std::stack<T>
 {
 	public:
-		typedef typename std::stack<T>::container_type::iterator	iterator;
-		MutantStack(void);
-		~MutantStack(void);
-		//MutantStack(const MutantStack& cpy);					//use the Constructor of stack beacuase no new attributes
-		//MutantStack<T>&	operator=(const MutantStack& cpy);	//use the Constructor of stack beacuase no new attributes
+		MutantStack<T>() : std::stack<T>() {};
+		MutantStack<T> (MutantStack const &src) : std::stack<T>(src) {};
+		MutantStack<T> &operator=(MutantStack const &rhs) {
+			if (this != &rhs)
+				this->c = rhs.c;
+			return (*this);
+		}
+		~MutantStack<T>() {};
 
-		iterator	begin(void);
-		iterator	end(void);
+		//Typedefs are used to make the code more readable but then als
+		//typename is required in order to use the typedef as a type
+		//So the typename keyword is used to tell the compiler that std::stack<T>::container_type::iterator refers to a type
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		MutantStack<T>::iterator begin (void) {
+			return (this->c.begin());
+		}
+		MutantStack<T>::iterator end (void){
+			return (this->c.end());
+		}
+
+		typedef typename std::stack<T>::container_type::const_iterator	const_iterator;
+		MutantStack<T>::const_iterator begin (void) const {
+			return (this->c.begin());
+		}
+		MutantStack<T>::const_iterator end (void) const {
+			return (this->c.end());
+		}
+
+		typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+		MutantStack<T>::reverse_iterator rbegin (void) {
+			return (this->c.rbegin());
+		}
+		MutantStack<T>::reverse_iterator rend (void) {
+			return (this->c.rend());
+		}
+
+		typedef typename std::stack<T>::container_type::const_reverse_iterator	const_reverse_iterator;
+		MutantStack<T>::const_reverse_iterator rbegin (void) const {
+			return (this->c.rbegin());
+		}
+		MutantStack<T>::const_reverse_iterator rend (void) const {
+			return (this->c.rend());
+		}
 };
-
-template<typename T>
-MutantStack<T>::MutantStack(void) {};
-
-template<typename T>
-MutantStack<T>::~MutantStack(void) {};
-
-/* template<typename T>
-MutantStack<T>::MutantStack(const MutantStack& cpy)
-{
-	if (this != &cpy)
-		this->operator=(cpy);
-};
-
-template <typename T>
-MutantStack<T>&	MutantStack<T>::operator=(const MutantStack& cpy)
-{
-	this->operator=(cpy);
-	return (*this);
-}; */
-
-template <typename T>
-typename MutantStack<T>::iterator	MutantStack<T>::begin(void)
-{
-	return (this->c.begin()); //Pointer to the first element of the underlying container
-};
-
-template <typename T>
-typename MutantStack<T>::iterator	MutantStack<T>::end(void)
-{
-	return (this->c.end()); //Pointer to the last element of the underlying container
-};
-
 #endif
