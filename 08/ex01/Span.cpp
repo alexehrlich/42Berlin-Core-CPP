@@ -6,7 +6,7 @@
 /*   By: aehrlich <aehrlich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:18:03 by aehrlich          #+#    #+#             */
-/*   Updated: 2024/01/09 17:49:27 by aehrlich         ###   ########.fr       */
+/*   Updated: 2024/01/10 08:40:39 by aehrlich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,22 @@ int	Span::shortestSpan() const
 {
 	if (_numbers.size() <= 1)
 		throw NoSpanException();
-	std::vector<int>::const_iterator first = _numbers.begin();
-	return (std::abs(*first - *(++first)));
+
+	int minDifference = std::abs(_numbers[0] - _numbers[1]);
+	for (std::vector<int>::const_iterator it1 = _numbers.begin(); it1 != _numbers.end(); ++it1) {
+		for (std::vector<int>::const_iterator it2 = it1 + 1; it2 != _numbers.end(); ++it2) {
+			int currentDifference = std::abs(*it1 - *it2);
+			if (currentDifference < minDifference) {
+				minDifference = currentDifference;
+			}
+		}
+	}
+	return minDifference;
 }
 
 int	Span::longestSpan() const
 {
-	return (_numbers.back() - _numbers.front());
+	return (std::abs(_numbers.back() - _numbers.front()));
 }
 
 int	Span::getSize() const
